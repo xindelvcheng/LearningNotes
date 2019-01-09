@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Android fundamental.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h2 id="%E4%B8%80-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">一. 项目目录结构</h2>
+<ul>
+<li>AndroidManifest.xml
+安卓的清单文件，定义四大组件</li>
+<li>src
+源代码</li>
+<li>gen
+自动生成文件
+<ul>
+<li>R.java
+自动生成的文件，包含id，用于索引<pre class="hljs"><code><div>//在*.java中索引
+EditText num_edit = (EditText) findViewById(R.id.editText1);
+//在*.xml中索引,@代表R文件
+@drawable/ic_launcher
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>assets
+资源文件，不会打包</li>
+<li>bin
+打包完成的文件，包括apk文件和dex文件</li>
+<li>res
+资源文件，打包并生成R文件内容
+<ul>
+<li>drawable-hdpi等
+图片资源</li>
+<li>layout
+布局资源</li>
+<li>values字符串</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E4%BA%8C-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%94%B5%E8%AF%9D%E6%8B%A8%E5%8F%B7%E5%99%A8">二. 入门案例：电话拨号器</h2>
+<blockquote>
+<p>就像Qt中所有控件都是Widget，安卓中所有控件都是View</p>
+</blockquote>
+<h3 id="%E6%8C%89%E9%92%AE%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6">按钮点击事件</h3>
+<p>1.匿名内部类</p>
+<pre class="hljs"><code><div>call_button.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+    }
+}
+</div></code></pre>
+<p>2.让MainActivity实现OnclickListener重写方法，传入参数this：<code>call_button.setOnClickListener(this);</code>。当界面中有多个同功能按钮比较方便<br>
+3.像xaml一样添加</p>
+<pre class="hljs"><code><div>//activity_main.xml中添加
+android:onClick=&quot;click&quot;
+...
+//MainActivity.java中添加
+public void click(View v){
+        ...
+    }
+</div></code></pre>
+<blockquote>
+<p>click的签名要注意。它是反射实现的（<code>getMethod(handlerName,View.class)</code>），所以参数要写View v</p>
+</blockquote>
+<ul>
+<li>使用Intent实现拨号功能</li>
+</ul>
+<pre class="hljs"><code><div>Intent intent = new Intent();
+intent.setAction(Intent.ACTION_CALL);
+intent.setData(Uri.parse(&quot;tel:&quot;+number));
+startActivity(intent);
+</div></code></pre>
+<h3 id="%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90">添加权限</h3>
+<p>在AndroidManifest.xml中添加<code>&lt;uses-permission android:name=&quot;android.permission.CALL_PHONE&quot;/&gt;</code></p>
+<h3 id="toast">Toast</h3>
+<p>显示少量信息的提示
+&gt;如何看文档？1. 看类的简介 2.看类的构造方法 3. 看类的方法
+<code>Toast.makeText(MainActivity.this, &quot;号码不能为空&quot;, Toast.LENGTH_LONG).show();</code>
+&gt;mskText()为静态方法，直接调用；不能忘记show();</p>
+<h2 id="%E5%B8%83%E5%B1%80">布局</h2>
+<p>在layout文件夹下新建布局文件，新建AndroidXmlFile选择RootElemnt为LinearLayout</p>
+<h3 id="linearlayout">LinearLayout</h3>
+<p>线性布局,相当于panelstack之类的</p>
+<h3 id="relativelayout">RelativeLayout</h3>
+<p>相对布局
+默认的布局，用id指定新的组件和原有组件位置关系(在某个组件的右边、下边等)</p>
+<pre class="hljs"><code><div>&lt;EditText
+        android:id=&quot;@+id/editText1&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignLeft=&quot;@+id/textView1&quot;
+        android:layout_below=&quot;@+id/textView1&quot;
+        android:ems=&quot;10&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button1&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignRight=&quot;@+id/textView1&quot;
+        android:layout_below=&quot;@+id/editText1&quot;
+        android:layout_marginTop=&quot;17dp&quot;
+        android:text=&quot;拨打&quot; /&gt;
+</div></code></pre>
+<blockquote>
+<p>这两个组件是安卓开发用的较多的</p>
+</blockquote>
+<h3 id="framelayout">FrameLayout</h3>
+<p>一层层显示，比如播放视频窗口的播放按钮</p>
+<h3 id="tablelayout">TableLayout</h3>
+<p>表格布局，相当于Qt的网格布局，不过安卓开发用的少,在TableRow标签中定义组件</p>
+<h3 id="absolutelayout">AbsoluteLayout</h3>
+<p>绝对布局，Qt，WPF，安卓中都用的少</p>
+<h3 id="%E9%80%9A%E7%94%A8%E5%B1%9E%E6%80%A7">通用属性</h3>
+<ul>
+<li>android:layout_gravity=&quot;center&quot;</li>
+<li>android:layout_margin=&quot;10dp&quot;
+外边距</li>
+<li>android:padding=&quot;10dp&quot;
+内边距</li>
+</ul>
+<h2 id="%E5%AE%89%E5%8D%93%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BD%8D">安卓中的单位</h2>
+<ul>
+<li>dp 常用</li>
+<li>px 像素，基本不用</li>
+<li>sp 字体</li>
+</ul>
+
+</body>
+</html>

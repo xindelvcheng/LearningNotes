@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Save&Load.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="android%E4%B8%AD%E6%9C%AC%E5%9C%B0%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%AF%BB%E5%8F%96">Android中本地数据的保存和读取</h1>
+<h2 id="%E4%B8%80%E4%BD%BF%E7%94%A8io">一.使用io</h2>
+<h3 id="context%E4%B8%8A%E4%B8%8B%E6%96%87">Context上下文</h3>
+<p>代表应用环境，包含google提供的各种api，如startActivity()，getFileDir()</p>
+<h3 id="%E5%86%99%E5%85%A5">写入</h3>
+<pre class="hljs"><code><div>this.openFileOutput(&quot;info.txt&quot;,0)
+// 相当于
+FileOutputStream fos = new FileOutputStream(new File(&quot;/data/data/com.xindelvcheng.helloandroid/info.txt&quot;));
+fos.write(result.getBytes());
+</div></code></pre>
+<h3 id="%E8%AF%BB%E5%8F%96">读取</h3>
+<pre class="hljs"><code><div>FileInputStream fis = context.openFileInput(&quot;data.txt&quot;);
+BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+String info = br.readLine();
+</div></code></pre>
+<h2 id="%E4%BA%8C%E4%BD%BF%E7%94%A8sharedpreferences%E5%AF%B9%E4%BA%8E%E7%AE%80%E5%8D%95%E4%BB%BB%E5%8A%A1%E5%BE%88%E6%96%B9%E4%BE%BF">二.使用SharedPreferences(对于简单任务很方便)</h2>
+<pre class="hljs"><code><div># 获取SharedPreferences对象
+SharedPreferences settings = getSharedPreferences(&quot;profile&quot;,MODE_PRIVATE);
+
+# 保存数据
+SharedPreferences.Editor edit = settings.edit();
+edit.putBoolean(&quot;save_passwd&quot;,true);
+
+# 读取数据
+cb.setChecked(settings.getBoolean(&quot;save_passwd&quot;,false));
+</div></code></pre>
+<h2 id="%E4%B8%89%E6%95%B0%E6%8D%AE%E5%BA%93">三.数据库</h2>
+<h3 id="%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93">创建数据库</h3>
+<pre class="hljs"><code><div>// 继承SQLiteOpenHelper
+public class MySqLiteOpenHelp extends SQLiteOpenHelper {
+    public MySqLiteOpenHelp(Context context) {
+        //上下文对象，数据库，null，Sqlite版本（只能升不能降）
+        super(context, &quot;test.db&quot;, null, 1);
+    }
+
+    /**
+     * 当数据库被创建时调用，可以用与表结构的初始化
+     * @param db
+     */
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(&quot;create table info(_id integer primary key autoincrement,name varchar(20))&quot;);
+    }
+
+    /**
+     * 当数据库版本升级时被调用，可用于表结构的更新
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+}
+
+//创建或打开数据库
+MySqLiteOpenHelp mySqLiteOpenHelp = new MySqLiteOpenHelp(getApplicationContext());
+// getReadableDatabase()和getWritableDatabase()都创建或打开一个数据库，并非一个只读一个只写
+SQLiteDatabase writableDatabase = mySqLiteOpenHelp.getWritableDatabase();
+</div></code></pre>
+<h3 id="%E6%89%A7%E8%A1%8Csql%E8%AF%AD%E5%8F%A5">执行sql语句</h3>
+<pre class="hljs"><code><div>db.execSQL(&quot;select * from tab&quot;);
+</div></code></pre>
+<h3 id="%E6%9F%A5%E8%AF%A2">查询</h3>
+<pre class="hljs"><code><div>// 获取结果集
+Cursor cursor = database.rawQuery(&quot;select * from info&quot;, null);
+// 获取记录数
+cursor.getCount()
+// 获取游标当前指向记录的值
+String id = cursor.getString(0);
+String name = cursor.getString(1);
+//将游标下移，返回boolean值
+while (cursor.moveToNext()) {
+    String name = cursor.getString(1);
+    System.out.println(name);
+}
+</div></code></pre>
+<h3 id="%E4%BD%BF%E7%94%A8adb%E5%92%8Csqlite3">使用adb和sqlite3</h3>
+<p>在F:\Repository\Android\Sdk\platform-tools下</p>
+<pre class="hljs"><code><div>$ adb shell
+$ su root
+$ cd /data/data/com.example.dbdemo/
+$ cd databases/
+$ sqlite3 test.db
+sqlite&gt; insert into info(name) values(&quot;zhangsan&quot;);
+sqlite&gt; select * from info;
+1|zhangsan
+2|lisi
+3|wangwu
+4|zhangsan
+5|lisi
+6|wangwu
+7|zhangsan
+8|zhangsan
+9|zhangsan
+</div></code></pre>
+<blockquote>
+<p>改变CMD编码方式</p>
+</blockquote>
+<pre class="hljs"><code><div>//改变成GBK
+$ chcp 936
+//改变成UTF-8
+$ chcp 65001
+</div></code></pre>
+<h3 id="%E4%BD%BF%E7%94%A8android%E6%8F%90%E4%BE%9B%E7%9A%84api%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E8%A1%8Ccrud">使用Android提供的API对数据库进行CRUD</h3>
+<p>1.插入数据</p>
+<pre class="hljs"><code><div>ContentValues values = new ContentValues();
+values.put(&quot;name&quot;,&quot;haha&quot;);
+long row_id = database.insert(&quot;info&quot;, null, values);//底层在拼接sql语句，返回值为新行的id
+</div></code></pre>
+<p>2.删除数据</p>
+<pre class="hljs"><code><div>database.delete(&quot;info&quot;, &quot;name=?&quot;, new String[]{&quot;zhangsan&quot;});//返回值为影响的行数
+</div></code></pre>
+<p>3.更新数据</p>
+<pre class="hljs"><code><div>values.put(&quot;name&quot;, &quot;haha&quot;);
+database.update(&quot;info&quot;, values, &quot;name=?&quot;, new String[]{&quot;zhangsan&quot;});
+</div></code></pre>
+<p>4.查询数据</p>
+<pre class="hljs"><code><div>Cursor cursor = database.query(&quot;info&quot;, null, &quot;name=?&quot;, new String[]{&quot;zhangsan&quot;}, null, null, null);
+</div></code></pre>
+<h3 id="%E4%BA%8B%E5%8A%A1">事务</h3>
+<pre class="hljs"><code><div>//开启事务
+database.beginTransaction();
+//如果执行到这句话事务提交，否则回滚
+database.setTransactionSuccessful();
+//关闭事务
+database.endTransaction();
+</div></code></pre>
+
+</body>
+</html>

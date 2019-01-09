@@ -1,0 +1,15 @@
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.csprojAssemblyReference.cache
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\MainWindow.g.cs
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\App.g.cs
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest_MarkupCompile.cache
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest_MarkupCompile.lref
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\bin\Debug\TimeTest.exe.config
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\bin\Debug\TimeTest.exe
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\bin\Debug\TimeTest.pdb
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\MainWindow.baml
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.g.resources
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.Properties.Resources.resources
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.csproj.GenerateResource.cache
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.csproj.CoreCompileInputs.cache
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.exe
+C:\Users\张伟振\source\repos\MySchedule\TimeTest\obj\Debug\TimeTest.pdb

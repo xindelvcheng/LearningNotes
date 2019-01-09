@@ -1,0 +1,12 @@
+numpy
+pandas
+opencv-python
+matplotlib
+jupyter
+requests
+tensorflow-gpu
+lxml
+scrapy
+torch-0.4.1-cp36-cp36m-win_amd64.whl
+torchvision
+selenium

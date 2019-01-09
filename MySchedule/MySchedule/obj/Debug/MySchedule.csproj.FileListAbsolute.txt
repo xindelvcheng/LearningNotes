@@ -1,0 +1,15 @@
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\bin\Debug\MySchedule.exe.config
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\bin\Debug\MySchedule.exe
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\bin\Debug\MySchedule.pdb
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.csprojAssemblyReference.cache
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MainWindow.g.cs
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\App.g.cs
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule_MarkupCompile.cache
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule_MarkupCompile.lref
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MainWindow.baml
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.g.resources
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.Properties.Resources.resources
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.csproj.GenerateResource.cache
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.csproj.CoreCompileInputs.cache
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.exe
+C:\Users\张伟振\source\repos\MySchedule\MySchedule\obj\Debug\MySchedule.pdb

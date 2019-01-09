@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="1440" key="dialogWidth"/>
+		<item value="837" key="dialogHeight"/>
+		<list key="orderedProviders">
+			<item value="org.eclipse.ui.perspectives"/>
+		</list>
+		<list key="textArray">
+			<item value="m"/>
+		</list>
+		<list key="orderedElements">
+			<item value="com.android.ide.eclipse.ddms.Perspective"/>
+		</list>
+		<list key="textEntries">
+			<item value="1"/>
+		</list>
+	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="-99" key="DIALOG_Y_ORIGIN"/>
+		<item value="-239" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>
